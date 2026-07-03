@@ -7,13 +7,17 @@ import html
 import json
 import lzma
 import os
+from typing import Any
 
 ROOT = Path(os.environ.get("GITHUB_WORKSPACE", Path(__file__).resolve().parent)).resolve()
 PUBLIC = ROOT / "public"
 EPGIMPORT = PUBLIC / "epgimport"
+DATA = ROOT / "data"
+MANUAL_EVENTS_FILE = DATA / "manual_events.json"
 
 PUBLIC.mkdir(parents=True, exist_ok=True)
 EPGIMPORT.mkdir(parents=True, exist_ok=True)
+DATA.mkdir(parents=True, exist_ok=True)
 
 CHANNEL_GROUPS: list[tuple[str, str, int, int, str]] = [
     ("rtlplus.sport", "RTL+ SPORT", 1, 20, "FHD"),
@@ -73,6 +77,26 @@ def xml_time(dt: datetime) -> str:
     return dt.astimezone(timezone(timedelta(hours=2))).strftime("%Y%m%d%H%M%S +0200")
 
 
+def parse_datetime(value: str) -> datetime:
+    text = str(value).strip()
+    if not text:
+        raise ValueError("empty datetime")
+
+    # Allows "2026-07-05T20:15:00+02:00" and "2026-07-05 20:15".
+    if "T" not in text and len(text) == 16:
+        text = text.replace(" ", "T") + ":00+02:00"
+    elif "T" not in text and len(text) == 19:
+        text = text.replace(" ", "T") + "+02:00"
+
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+
+    dt = datetime.fromisoformat(text)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone(timedelta(hours=2)))
+    return dt
+
+
 def category_for_channel(channel_id: str) -> str:
     if ".ufc." in channel_id:
         return "MMA"
@@ -85,29 +109,107 @@ def category_for_channel(channel_id: str) -> str:
     return "Sport"
 
 
-def build_demo_programmes(channels: list[tuple[str, str]]) -> list[str]:
+def load_manual_events(valid_channel_ids: set[str]) -> tuple[list[dict[str, Any]], list[str]]:
+    errors: list[str] = []
+    events: list[dict[str, Any]] = []
+
+    if not MANUAL_EVENTS_FILE.exists():
+        return [], [f"{MANUAL_EVENTS_FILE} not found"]
+
+    try:
+        raw = json.loads(MANUAL_EVENTS_FILE.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return [], [f"manual_events.json parse error: {type(exc).__name__}: {exc}"]
+
+    if not isinstance(raw, list):
+        return [], ["manual_events.json must be a JSON array"]
+
+    for index, item in enumerate(raw, start=1):
+        if not isinstance(item, dict):
+            errors.append(f"event #{index}: must be an object")
+            continue
+
+        channel = str(item.get("channel", "")).strip()
+        title = str(item.get("title", "")).strip()
+        desc = str(item.get("desc", "")).strip()
+        category = str(item.get("category", "")).strip()
+        start_raw = item.get("start")
+        stop_raw = item.get("stop")
+        duration_raw = item.get("duration_minutes", item.get("duration", 120))
+
+        if not channel:
+            errors.append(f"event #{index}: missing channel")
+            continue
+        if channel not in valid_channel_ids:
+            errors.append(f"event #{index}: unknown channel {channel}")
+            continue
+        if not title:
+            errors.append(f"event #{index}: missing title")
+            continue
+        if not start_raw:
+            errors.append(f"event #{index}: missing start")
+            continue
+
+        try:
+            start = parse_datetime(str(start_raw))
+        except Exception as exc:
+            errors.append(f"event #{index}: invalid start: {exc}")
+            continue
+
+        if stop_raw:
+            try:
+                stop = parse_datetime(str(stop_raw))
+            except Exception as exc:
+                errors.append(f"event #{index}: invalid stop: {exc}")
+                continue
+        else:
+            try:
+                duration = int(duration_raw)
+            except Exception:
+                duration = 120
+            if duration < 1:
+                duration = 120
+            stop = start + timedelta(minutes=duration)
+
+        if stop <= start:
+            errors.append(f"event #{index}: stop must be after start")
+            continue
+
+        if not category:
+            category = category_for_channel(channel)
+
+        events.append({
+            "channel": channel,
+            "title": title,
+            "desc": desc,
+            "category": category,
+            "start": start,
+            "stop": stop,
+        })
+
+    events.sort(key=lambda event: (event["start"], event["channel"], event["title"]))
+    return events, errors
+
+
+def build_demo_programmes(channels: list[tuple[str, str]]) -> list[dict[str, Any]]:
     now = datetime.now(timezone.utc)
     start = now.replace(minute=0, second=0, microsecond=0)
     stop = start + timedelta(hours=2)
 
-    lines: list[str] = []
-
+    events: list[dict[str, Any]] = []
     for channel_id, name in channels:
-        category = category_for_channel(channel_id)
-        lines.append(
-            f'  <programme start="{xml_time(start)}" stop="{xml_time(stop)}" channel="{esc(channel_id)}">'
-        )
-        lines.append(f'    <title lang="de">{esc(name)} - EPG Test</title>')
-        lines.append(
-            '    <desc lang="de">Demo-Eintrag. Wenn du das im EPG siehst, funktioniert GitHub Pages + EPGImport.</desc>'
-        )
-        lines.append(f'    <category lang="de">{esc(category)}</category>')
-        lines.append("  </programme>")
-
-    return lines
+        events.append({
+            "channel": channel_id,
+            "title": f"{name} - EPG Test",
+            "desc": "Demo-Eintrag. Wenn du das im EPG siehst, funktioniert GitHub Pages + EPGImport.",
+            "category": category_for_channel(channel_id),
+            "start": start,
+            "stop": stop,
+        })
+    return events
 
 
-def write_xmltv(channels: list[tuple[str, str]]) -> int:
+def write_xmltv(channels: list[tuple[str, str]], events: list[dict[str, Any]]) -> None:
     lines: list[str] = ['<?xml version="1.0" encoding="UTF-8"?>']
     lines.append('<tv generator-info-name="Secret_DE_EPG">')
 
@@ -116,10 +218,18 @@ def write_xmltv(channels: list[tuple[str, str]]) -> int:
         lines.append(f'    <display-name>{esc(name)}</display-name>')
         lines.append("  </channel>")
 
-    programme_lines = build_demo_programmes(channels)
-    lines.extend(programme_lines)
-    lines.append("</tv>")
+    for event in events:
+        lines.append(
+            f'  <programme start="{xml_time(event["start"])}" stop="{xml_time(event["stop"])}" channel="{esc(event["channel"])}">'
+        )
+        lines.append(f'    <title lang="de">{esc(event["title"])}</title>')
+        if event.get("desc"):
+            lines.append(f'    <desc lang="de">{esc(event["desc"])}</desc>')
+        if event.get("category"):
+            lines.append(f'    <category lang="de">{esc(event["category"])}</category>')
+        lines.append("  </programme>")
 
+    lines.append("</tv>")
     xml_text = "\n".join(lines) + "\n"
 
     xml_path = PUBLIC / "sports-events.xml"
@@ -129,8 +239,6 @@ def write_xmltv(channels: list[tuple[str, str]]) -> int:
 
     with lzma.open(xz_path, "wb", preset=6) as handle:
         handle.write(xml_text.encode("utf-8"))
-
-    return len(channels)
 
 
 def write_epgimport_files(channels: list[tuple[str, str]]) -> None:
@@ -159,16 +267,17 @@ def write_epgimport_files(channels: list[tuple[str, str]]) -> None:
     )
 
 
-def write_index(channels: list[tuple[str, str]]) -> None:
+def write_index(channels: list[tuple[str, str]], manual_event_count: int, fallback_used: bool) -> None:
     rows = []
-    for prefix, label, _start, end, suffix in CHANNEL_GROUPS:
+    for prefix, label, start, end, suffix in CHANNEL_GROUPS:
         suffix_text = f" {suffix}" if suffix else ""
         rows.append(
-            f"<li><code>{esc(prefix)}.01</code> bis <code>{esc(prefix)}.{end:02d}</code> — "
-            f"{esc(label)} 1-{end}{esc(suffix_text)}</li>"
+            f"<li><code>{esc(prefix)}.01</code> bis <code>{esc(prefix)}.{end:02d}</code> — {esc(label)} 1-{end}{esc(suffix_text)}</li>"
         )
     for channel_id, name in EXTRA_CHANNELS:
         rows.append(f"<li><code>{esc(channel_id)}</code> — {esc(name)}</li>")
+
+    mode = "Demo-Fallback" if fallback_used else "Manuelle Events aktiv"
 
     html_doc = f'''<!doctype html>
 <html lang="de">
@@ -178,6 +287,8 @@ def write_index(channels: list[tuple[str, str]]) -> None:
 </head>
 <body>
   <h1>Secret DE EPG</h1>
+  <p>Modus: <strong>{esc(mode)}</strong></p>
+  <p>Manuelle Events: {manual_event_count}</p>
   <p>XMLTV Feed: <a href="sports-events.xml.xz">sports-events.xml.xz</a></p>
   <p>Unkomprimierte XML: <a href="sports-events.xml">sports-events.xml</a></p>
   <p>Status: <a href="status.json">status.json</a></p>
@@ -194,14 +305,22 @@ def write_index(channels: list[tuple[str, str]]) -> None:
     (PUBLIC / "index.html").write_text(html_doc, encoding="utf-8", newline="\n")
 
 
-def write_status(channels: list[tuple[str, str]], programme_count: int) -> None:
+def write_status(channels: list[tuple[str, str]], events: list[dict[str, Any]], manual_event_count: int, fallback_used: bool, errors: list[str]) -> None:
+    events_by_channel: dict[str, int] = {}
+    for event in events:
+        channel = str(event["channel"])
+        events_by_channel[channel] = events_by_channel.get(channel, 0) + 1
+
     status = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "base_url": repo_pages_url(),
         "channel_count": len(channels),
-        "event_count": programme_count,
-        "fallback_used": True,
-        "note": "Stable demo feed. Real provider scrapers can be added after the GitHub Pages pipeline is stable.",
+        "event_count": len(events),
+        "manual_event_count": manual_event_count,
+        "fallback_used": fallback_used,
+        "manual_events_file": str(MANUAL_EVENTS_FILE.relative_to(ROOT)) if MANUAL_EVENTS_FILE.exists() else "data/manual_events.json missing",
+        "errors": errors,
+        "events_by_channel": events_by_channel,
         "groups": [group[0] for group in CHANNEL_GROUPS],
     }
     (PUBLIC / "status.json").write_text(
@@ -213,16 +332,27 @@ def write_status(channels: list[tuple[str, str]], programme_count: int) -> None:
 
 def main() -> None:
     channels = build_channels()
-    programme_count = write_xmltv(channels)
+    valid_channel_ids = {channel_id for channel_id, _name in channels}
+
+    manual_events, manual_errors = load_manual_events(valid_channel_ids)
+
+    if manual_events:
+        events = manual_events
+        fallback_used = False
+    else:
+        events = build_demo_programmes(channels)
+        fallback_used = True
+
+    write_xmltv(channels, events)
     write_epgimport_files(channels)
-    write_index(channels)
-    write_status(channels, programme_count)
+    write_index(channels, len(manual_events), fallback_used)
+    write_status(channels, events, len(manual_events), fallback_used, manual_errors)
 
     print(f"Generated {len(channels)} channels")
-    print(f"Generated {programme_count} demo programmes")
+    print(f"Generated {len(events)} programmes")
+    print(f"Manual events: {len(manual_events)}")
+    print(f"Fallback used: {fallback_used}")
     print(f"Public folder: {PUBLIC}")
-    print(f"Feed: {PUBLIC / 'sports-events.xml.xz'}")
-    print(f"Status: {PUBLIC / 'status.json'}")
 
 
 if __name__ == "__main__":
