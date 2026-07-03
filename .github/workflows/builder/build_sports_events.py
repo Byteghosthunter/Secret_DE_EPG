@@ -4,7 +4,14 @@ import lzma
 from datetime import datetime, timezone, timedelta
 import html
 
-ROOT = Path(__file__).resolve().parents[1]
+# Funktioniert sowohl, wenn die Datei im Hauptordner liegt,
+# als auch wenn sie später in builder/build_sports_events.py liegt.
+HERE = Path(__file__).resolve()
+if HERE.parent.name == "builder":
+    ROOT = HERE.parents[1]
+else:
+    ROOT = HERE.parent
+
 PUBLIC = ROOT / "public"
 EPGIMPORT = PUBLIC / "epgimport"
 
@@ -16,20 +23,41 @@ channels = []
 def add_channel(channel_id, name):
     channels.append((channel_id, name))
 
-for i in range(1, 11):
-    add_channel(f"dazn.event.{i:02d}", f"DAZN Event {i} FHD")
-for i in range(1, 11):
-    add_channel(f"dazn.bundesliga.{i:02d}", f"DAZN Bundesliga {i} FHD")
-for i in range(1, 26):
-    add_channel(f"dyn.sport.{i:02d}", f"DYN Sport {i}")
-for i in range(1, 10):
-    add_channel(f"prime.event.{i:02d}", f"Amazon Prime Event {i}")
-for i in range(1, 17):
-    add_channel(f"discovery.extra.{i:02d}", f"Discovery Extra {i}")
-for i in range(1, 17):
-    add_channel(f"eurosport.extra.{i:02d}", f"Eurosport Extra {i}")
-for i in range(1, 21):
-    add_channel(f"sporteurope.tv.{i:02d}", f"SportDeutschland.TV {i}")
+def add_range(prefix, label, start, end, suffix=""):
+    for i in range(start, end + 1):
+        name = f"{label} {i}"
+        if suffix:
+            name = f"{name} {suffix}"
+        add_channel(f"{prefix}.{i:02d}", name)
+
+# RTL+
+add_range("rtlplus.sport", "RTL+ SPORT", 1, 20, "FHD")
+
+# DAZN allgemein
+add_range("dazn.event", "DAZN Event", 1, 10, "FHD")
+add_range("dazn.bundesliga", "DAZN Bundesliga", 1, 10, "FHD")
+
+# DAZN Spezial-Bereiche
+add_range("dazn.laliga", "DAZN LaLiga", 1, 10, "FHD")
+add_range("dazn.ufc", "DAZN UFC", 1, 10, "FHD")
+add_range("dazn.nba", "DAZN NBA", 1, 10, "FHD")
+add_range("dazn.nfl", "DAZN NFL", 1, 10, "FHD")
+add_range("dazn.ligue1", "DAZN Ligue 1", 1, 10, "FHD")
+add_range("dazn.seriea", "DAZN Serie A", 1, 10, "FHD")
+
+# DYN
+add_range("dyn.sport", "DYN Sport", 1, 25)
+
+# Amazon / Prime
+add_range("amazon.live", "Amazon Live Event", 1, 8)
+add_range("prime.event", "Amazon Prime Event", 1, 9)
+
+# Discovery / Eurosport
+add_range("discovery.extra", "Discovery Extra", 1, 16)
+add_range("eurosport.extra", "Eurosport Extra", 1, 16)
+
+# SportDeutschland / Sporteurope
+add_range("sporteurope.tv", "SportDeutschland.TV", 1, 20)
 add_channel("sporteurope.del2", "Sport.DE DEL 2")
 
 now = datetime.now(timezone.utc)
@@ -69,7 +97,7 @@ source_xml = '''<?xml version="1.0" encoding="utf-8"?>
   <sourcecat sourcecatname="Secret DE Sports Event EPG">
     <source type="gen_xmltv" nocheck="1" channels="/etc/epgimport/sports-events.channels.xml">
       <description>Secret DE Sports Event EPG</description>
-      <url>https://Byteghosthunter.github.io/Secret_DE_EPG/sports-events.xml.xz</url>
+      <url>https://byteghosthunter.github.io/Secret_DE_EPG/sports-events.xml.xz</url>
     </source>
   </sourcecat>
 </sources>
@@ -78,7 +106,8 @@ source_xml = '''<?xml version="1.0" encoding="utf-8"?>
 
 channels_xml = ['<?xml version="1.0" encoding="utf-8"?>', '<channels>']
 for channel_id, name in channels:
-    channels_xml.append(f'  <channel id="{channel_id}">DEINE_SERVICE_REFERENCE_FUER_{channel_id.upper().replace(".", "_")}</channel>')
+    placeholder = channel_id.upper().replace(".", "_").replace("-", "_")
+    channels_xml.append(f'  <channel id="{channel_id}">DEINE_SERVICE_REFERENCE_FUER_{placeholder}</channel>')
 channels_xml.append('</channels>')
 (EPGIMPORT / "sports-events.channels.xml").write_text("\n".join(channels_xml) + "\n", encoding="utf-8")
 
@@ -100,3 +129,4 @@ index = '''<!doctype html>
 
 print(f"Wrote {xml_path}")
 print(f"Wrote {xz_path}")
+print(f"Channels: {len(channels)}")
