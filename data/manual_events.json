@@ -1,18 +1,42 @@
 [
   {
     "channel": "dazn.nba.01",
-    "start": "2026-07-04T12:00:00+02:00",
-    "duration_minutes": 720,
+    "start": "2026-07-04T10:00:00+02:00",
+    "duration_minutes": 900,
     "title": "TEST - DAZN NBA 1",
     "category": "Basketball",
-    "desc": "Manueller Testeintrag für Secret_DE_EPG"
+    "desc": "Wenn du das siehst, funktioniert Secret_DE_EPG auf DAZN NBA 1."
+  },
+  {
+    "channel": "dazn.nfl.01",
+    "start": "2026-07-04T10:00:00+02:00",
+    "duration_minutes": 900,
+    "title": "TEST - DAZN NFL 1",
+    "category": "American Football",
+    "desc": "Wenn du das siehst, funktioniert Secret_DE_EPG auf DAZN NFL 1."
   },
   {
     "channel": "amazon.live.01",
-    "start": "2026-07-04T12:00:00+02:00",
-    "duration_minutes": 720,
+    "start": "2026-07-04T10:00:00+02:00",
+    "duration_minutes": 900,
     "title": "TEST - Amazon Live Event 1",
     "category": "Sport",
-    "desc": "Manueller Testeintrag für Secret_DE_EPG"
+    "desc": "Wenn du das siehst, funktioniert Secret_DE_EPG auf Amazon Live Event 1."
+  },
+  {
+    "channel": "rtlplus.sport.01",
+    "start": "2026-07-04T10:00:00+02:00",
+    "duration_minutes": 900,
+    "title": "TEST - RTL+ SPORT 1 FHD",
+    "category": "Sport",
+    "desc": "Wenn du das siehst, funktioniert Secret_DE_EPG auf RTL+ SPORT 1."
+  },
+  {
+    "channel": "dyn.sport.01",
+    "start": "2026-07-04T10:00:00+02:00",
+    "duration_minutes": 900,
+    "title": "TEST - DYN Sport 1",
+    "category": "Sport",
+    "desc": "Wenn du das siehst, funktioniert Secret_DE_EPG auf DYN Sport 1."
   }
 ]
