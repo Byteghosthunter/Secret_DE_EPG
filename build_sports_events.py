@@ -751,7 +751,7 @@ def write_epgimport_files(channels: list[tuple[str, str]]) -> None:
     source_xml = f'''<?xml version="1.0" encoding="utf-8"?>
 <sources>
   <sourcecat sourcecatname="Secret DE Sports Event EPG">
-    <source type="gen_xmltv" nocheck="1" channels="/etc/epgimport/sports-events.channels.xml">
+    <source type="gen_xmltv" nocheck="1" channels="/etc/epgimport/echannelizer.channels/bytegh.sport-feeds.xml">
       <description>Secret DE Sports Event EPG</description>
       <url>{esc(base_url)}/sports-events.xml.xz</url>
     </source>
