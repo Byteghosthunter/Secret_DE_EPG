@@ -1,0 +1,39 @@
+name: Prime Events Probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  prime-events-probe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Prime Events probe
+        run: python3 tools/probe_prime_events.py
+
+      - name: Show result preview
+        run: |
+          echo "Generated files:"
+          find prime-events-results -type f -print
+          echo ""
+          echo "Preview:"
+          sed -n '1,520p' prime-events-results/prime-events-probe.txt
+
+      - name: Upload Prime Events probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: prime-events-probe
+          path: prime-events-results/
+          if-no-files-found: error
