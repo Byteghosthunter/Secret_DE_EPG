@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -31,8 +32,7 @@ jobs:
           python-version: "3.12"
 
       - name: Build XMLTV and EPGImport files
-        run: |
-          python3 build_sports_events.py
+        run: python3 build_sports_events.py
 
       - name: Check generated files
         run: |
@@ -51,20 +51,14 @@ jobs:
           test -f public/epgimport/sports-events.sources.xml
           test -f public/epgimport/sports-events.channels.xml
 
-      - name: Build sports events
-  run: python3 build_sports_events.py
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
-- name: Probe provider sources
-  run: python3 tools/probe_providers.py
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
 
-- name: Configure GitHub Pages
-  uses: actions/configure-pages@v5
-
-- name: Upload Pages artifact
-  uses: actions/upload-pages-artifact@v3
-  with:
-    path: public
-
-- name: Deploy to GitHub Pages
-  id: deployment
-  uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
