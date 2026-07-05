@@ -1,0 +1,39 @@
+name: DYN Matchups Probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  dyn-matchups-probe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run DYN matchups probe
+        run: python3 tools/probe_dyn_matchups.py
+
+      - name: Show result preview
+        run: |
+          echo "Generated files:"
+          find dyn-matchups-results -type f -print
+          echo ""
+          echo "Preview:"
+          sed -n '1,320p' dyn-matchups-results/dyn-matchups-probe.txt
+
+      - name: Upload DYN matchups probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dyn-matchups-probe
+          path: dyn-matchups-results/
+          if-no-files-found: error
