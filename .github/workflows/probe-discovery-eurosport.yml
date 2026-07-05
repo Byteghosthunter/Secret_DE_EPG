@@ -1,0 +1,57 @@
+name: Discovery Eurosport Probe
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "tools/probe_discovery_eurosport.py"
+      - ".github/workflows/probe-discovery-eurosport.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discovery-eurosport-probe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show files
+        run: |
+          pwd
+          ls -la
+          ls -la tools || true
+          ls -la .github/workflows || true
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Syntax check
+        run: python3 -m py_compile tools/probe_discovery_eurosport.py
+
+      - name: Run Discovery/Eurosport probe
+        run: python3 tools/probe_discovery_eurosport.py
+
+      - name: Show result preview
+        if: always()
+        run: |
+          echo "Generated files:"
+          find discovery-eurosport-results -type f -print 2>/dev/null || true
+          echo ""
+          echo "Preview candidates:"
+          sed -n '1,260p' discovery-eurosport-results/discovery-eurosport-candidates.txt 2>/dev/null || true
+          echo ""
+          echo "Preview full:"
+          sed -n '1,700p' discovery-eurosport-results/discovery-eurosport-probe.txt 2>/dev/null || true
+
+      - name: Upload Discovery/Eurosport probe artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-eurosport-probe
+          path: discovery-eurosport-results/
+          if-no-files-found: warn
