@@ -1,0 +1,37 @@
+name: Probe Provider Sources
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Probe provider sources
+        run: python3 tools/probe_providers.py
+
+      - name: Show generated files
+        run: |
+          echo "Probe results:"
+          find probe-results -type f -maxdepth 2 -print
+          echo "Preview:"
+          sed -n '1,160p' probe-results/provider-probe.txt
+
+      - name: Upload probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: provider-probe
+          path: probe-results/
+          if-no-files-found: error
