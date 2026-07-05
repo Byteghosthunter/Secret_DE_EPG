@@ -1,0 +1,39 @@
+name: DYN Deep Probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  dyn-deep-probe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run DYN deep probe
+        run: python3 tools/probe_dyn_deep.py
+
+      - name: Show result preview
+        run: |
+          echo "Generated files:"
+          find dyn-deep-results -type f -print
+          echo ""
+          echo "Preview:"
+          sed -n '1,260p' dyn-deep-results/dyn-deep-probe.txt
+
+      - name: Upload DYN deep probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dyn-deep-probe
+          path: dyn-deep-results/
+          if-no-files-found: error
