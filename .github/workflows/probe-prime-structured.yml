@@ -1,0 +1,42 @@
+name: Prime Structured Probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  prime-structured-probe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run Prime structured probe
+        run: python3 tools/probe_prime_structured.py
+
+      - name: Show result preview
+        run: |
+          echo "Generated files:"
+          find prime-structured-results -type f -print
+          echo ""
+          echo "Preview candidates:"
+          sed -n '1,220p' prime-structured-results/prime-structured-candidates.txt
+          echo ""
+          echo "Preview full:"
+          sed -n '1,520p' prime-structured-results/prime-structured-probe.txt
+
+      - name: Upload Prime structured probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: prime-structured-probe
+          path: prime-structured-results/
+          if-no-files-found: error
