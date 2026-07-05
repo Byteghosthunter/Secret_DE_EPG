@@ -53,6 +53,9 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        
+      - name: Probe provider sources
+        run: python3 tools/probe_providers.py
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
