@@ -1,0 +1,39 @@
+name: Scrape DYN Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  scrape-dyn:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run DYN scraper test
+        run: python3 tools/scrape_dyn_test.py
+
+      - name: Show result preview
+        run: |
+          echo "Generated files:"
+          find dyn-results -type f -print
+          echo ""
+          echo "Preview:"
+          sed -n '1,260p' dyn-results/dyn-events.txt
+
+      - name: Upload DYN scraper artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dyn-scraper-test
+          path: dyn-results/
+          if-no-files-found: error
