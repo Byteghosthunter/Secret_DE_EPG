@@ -1,0 +1,30 @@
+name: Probe Provider Sources
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Probe provider sources
+        run: python3 tools/probe_providers.py
+
+      - name: Upload probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: provider-probe
+          path: probe-results
