@@ -51,17 +51,20 @@ jobs:
           test -f public/epgimport/sports-events.sources.xml
           test -f public/epgimport/sports-events.channels.xml
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-        
-      - name: Probe provider sources
-        run: python3 tools/probe_providers.py
+      - name: Build sports events
+  run: python3 build_sports_events.py
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: public
+- name: Probe provider sources
+  run: python3 tools/probe_providers.py
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+- name: Configure GitHub Pages
+  uses: actions/configure-pages@v5
+
+- name: Upload Pages artifact
+  uses: actions/upload-pages-artifact@v3
+  with:
+    path: public
+
+- name: Deploy to GitHub Pages
+  id: deployment
+  uses: actions/deploy-pages@v4
