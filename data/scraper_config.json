@@ -1,0 +1,19 @@
+{
+  "scrapers_enabled": true,
+  "providers": {
+    "dazn_discovery_epg": {
+      "enabled": true,
+      "base_url": "https://epg.discovery.indazn.com/eu/v1/Epg",
+      "country": "de",
+      "languageCode": "de",
+      "days_ahead": 7,
+      "timeout_seconds": 20,
+      "allowed_types": ["Live", "UpComing"]
+    },
+    "dazn_epgpw": {
+      "enabled": true,
+      "url": "https://epg.pw/api/epg.json?channel_id=76632",
+      "timeout_seconds": 12
+    }
+  }
+}
