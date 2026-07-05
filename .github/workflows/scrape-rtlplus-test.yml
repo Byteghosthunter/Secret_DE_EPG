@@ -1,0 +1,39 @@
+name: Scrape RTLPlus Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  scrape-rtlplus:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run RTLPlus scraper test
+        run: python3 tools/scrape_rtlplus_test.py
+
+      - name: Show result preview
+        run: |
+          echo "Generated files:"
+          find rtlplus-results -type f -print
+          echo ""
+          echo "Preview:"
+          sed -n '1,220p' rtlplus-results/rtlplus-events.txt
+
+      - name: Upload RTLPlus scraper artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rtlplus-scraper-test
+          path: rtlplus-results/
+          if-no-files-found: error
