@@ -1,0 +1,77 @@
+name: Probe Magenta Sport
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: "Maximum Magenta API pages to probe"
+        required: false
+        default: "40"
+      extra_keyword:
+        description: "Optional extra keyword, e.g. 3. liga or magenta"
+        required: false
+        default: ""
+  push:
+    paths:
+      - "tools/probe_magenta_sport.py"
+      - ".github/workflows/probe-magenta-sport.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  probe-magenta-sport:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check probe script exists
+        run: |
+          echo "PWD=$PWD"
+          echo "Repo files:"
+          find . -maxdepth 3 -type f | sort | sed -n '1,160p'
+          test -f tools/probe_magenta_sport.py
+          python3 -m py_compile tools/probe_magenta_sport.py
+
+      - name: Run MagentaSport probe
+        run: |
+          mkdir -p public/probes
+
+          if [ -n "${{ github.event.inputs.extra_keyword }}" ]; then
+            python3 tools/probe_magenta_sport.py \
+              --max-pages "${{ github.event.inputs.max_pages || '40' }}" \
+              --keyword "${{ github.event.inputs.extra_keyword }}" \
+              --out-dir public/probes
+          else
+            python3 tools/probe_magenta_sport.py \
+              --max-pages "${{ github.event.inputs.max_pages || '40' }}" \
+              --out-dir public/probes
+          fi
+
+      - name: Show MagentaSport probe summary
+        run: |
+          echo "Generated probe files:"
+          find public/probes -maxdepth 1 -type f -print | sort
+
+          echo ""
+          echo "Summary JSON:"
+          sed -n '1,260p' public/probes/magenta_probe_summary.json
+
+          echo ""
+          echo "Events preview:"
+          sed -n '1,260p' public/probes/magenta_probe_events_preview.json
+
+      - name: Upload MagentaSport probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: magenta-sport-probe
+          path: public/probes/
+          if-no-files-found: error
