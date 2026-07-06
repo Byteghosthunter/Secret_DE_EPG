@@ -1,0 +1,49 @@
+name: Discovery Eurosport Detail Probe
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "tools/probe_discovery_eurosport_detail.py"
+      - ".github/workflows/probe-discovery-eurosport-detail.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discovery-eurosport-detail-probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Show files
+        run: |
+          pwd
+          ls -la tools || true
+          ls -la .github/workflows || true
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax check
+        run: python3 -m py_compile tools/probe_discovery_eurosport_detail.py
+      - name: Run Discovery Eurosport detail probe
+        run: python3 tools/probe_discovery_eurosport_detail.py
+      - name: Print detail candidates to log
+        if: always()
+        run: |
+          echo "================ DISCOVERY EUROSPORT DETAIL CANDIDATES ================"
+          cat discovery-eurosport-detail-results/discovery-eurosport-detail-candidates.txt 2>/dev/null || true
+          echo "================ DISCOVERY EUROSPORT DETAIL PROBE HEAD ================"
+          sed -n '1,2600p' discovery-eurosport-detail-results/discovery-eurosport-detail-probe.txt 2>/dev/null || true
+      - name: Write job summary
+        if: always()
+        run: |
+          {
+            echo "# Discovery/Eurosport Detail Probe"
+            echo ""
+            echo "## Detail candidates"
+            echo '```text'
+            sed -n '1,900p' discovery-eurosport-detail-results/discovery-eurosport-detail-candidates.txt 2>/dev/null || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
