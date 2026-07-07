@@ -1,0 +1,110 @@
+name: Probe Prime Wimbledon
+
+on:
+  workflow_dispatch:
+    inputs:
+      keywords:
+        description: "Comma-separated keywords"
+        required: false
+        default: "wimbledon,djokovic,auger,aliassime,felix,lincer,maria,centre court,center court,court,tennis,atp,wta,challenger"
+      extra_url:
+        description: "Optional extra Prime/Amazon URL to probe"
+        required: false
+        default: ""
+  push:
+    paths:
+      - "tools/probe_prime_wimbledon.py"
+      - "probe_prime_wimbledon.py"
+      - ".github/workflows/probe-prime-wimbledon.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe-prime-wimbledon:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Find probe script
+        id: find_probe
+        shell: bash
+        run: |
+          echo "PWD=$PWD"
+          echo "Repo files:"
+          find . -maxdepth 3 -type f | sort | sed -n '1,260p'
+
+          if [ -f "tools/probe_prime_wimbledon.py" ]; then
+            echo "script=tools/probe_prime_wimbledon.py" >> "$GITHUB_OUTPUT"
+          elif [ -f "probe_prime_wimbledon.py" ]; then
+            echo "script=probe_prime_wimbledon.py" >> "$GITHUB_OUTPUT"
+          else
+            echo "ERROR: probe_prime_wimbledon.py not found."
+            echo "Expected one of:"
+            echo "  tools/probe_prime_wimbledon.py"
+            echo "  probe_prime_wimbledon.py"
+            exit 1
+          fi
+
+      - name: Syntax check
+        run: |
+          python3 -m py_compile "${{ steps.find_probe.outputs.script }}"
+
+      - name: Run Prime/Wimbledon probe
+        shell: bash
+        run: |
+          mkdir -p public/probes
+
+          KEYWORDS="${{ github.event.inputs.keywords }}"
+          EXTRA_URL="${{ github.event.inputs.extra_url }}"
+
+          if [ -z "$KEYWORDS" ]; then
+            KEYWORDS="wimbledon,djokovic,auger,aliassime,felix,lincer,maria,centre court,center court,court,tennis,atp,wta,challenger"
+          fi
+
+          echo "Using probe script: ${{ steps.find_probe.outputs.script }}"
+          echo "keywords=$KEYWORDS"
+          echo "extra_url=$EXTRA_URL"
+
+          if [ -n "$EXTRA_URL" ]; then
+            python3 "${{ steps.find_probe.outputs.script }}" \
+              --keywords "$KEYWORDS" \
+              --extra-url "$EXTRA_URL" \
+              --out-dir public/probes
+          else
+            python3 "${{ steps.find_probe.outputs.script }}" \
+              --keywords "$KEYWORDS" \
+              --out-dir public/probes
+          fi
+
+      - name: Show Prime/Wimbledon probe summary
+        shell: bash
+        run: |
+          echo "Generated probe files:"
+          find public/probes -maxdepth 1 -type f -print | sort
+
+          echo ""
+          echo "Summary JSON:"
+          sed -n '1,260p' public/probes/prime_wimbledon_probe_summary.json || true
+
+          echo ""
+          echo "Keyword hits preview:"
+          sed -n '1,260p' public/probes/prime_wimbledon_probe_keyword_hits.json || true
+
+          echo ""
+          echo "Slot hints preview:"
+          sed -n '1,220p' public/probes/prime_wimbledon_probe_slot_hints.json || true
+
+      - name: Upload Prime/Wimbledon probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: prime-wimbledon-probe
+          path: public/probes/
+          if-no-files-found: error
