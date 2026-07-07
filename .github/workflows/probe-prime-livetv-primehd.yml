@@ -1,0 +1,44 @@
+name: Probe Prime LiveTV PrimeHD
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Prime LiveTV PrimeHD probe
+        run: |
+          set -e
+          if [ -f tools/probe_prime_livetv_primehd.py ]; then
+            python3 tools/probe_prime_livetv_primehd.py
+          elif [ -f probe_prime_livetv_primehd.py ]; then
+            python3 probe_prime_livetv_primehd.py
+          else
+            echo "probe_prime_livetv_primehd.py not found"
+            exit 1
+          fi
+
+      - name: Upload probe artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: prime-livetv-primehd-probe
+          path: public/probes/*.json
+          if-no-files-found: error
+
+      - name: Commit probe output to Pages folder
+        run: |
+          set -e
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add public/probes/*.json
+          git commit -m "Update Prime LiveTV PrimeHD probe" || echo "No changes"
+          git push
