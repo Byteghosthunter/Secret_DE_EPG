@@ -4,8 +4,8 @@
     "final_url": "https://www.primevideo.com/-/de/livetv",
     "ok": true,
     "error": "",
-    "bytes": 1504968,
-    "json_blocks": 74,
+    "bytes": 1469097,
+    "json_blocks": 72,
     "html_keyword_hits": [
       {
         "keyword": "prime",
@@ -17,19 +17,19 @@
       },
       {
         "keyword": "sport",
-        "count": 102
+        "count": 106
       },
       {
         "keyword": "sports",
-        "count": 69
+        "count": 73
       },
       {
         "keyword": "livetv",
-        "count": 113
+        "count": 112
       },
       {
         "keyword": "linear",
-        "count": 2218
+        "count": 2181
       },
       {
         "keyword": "channel",
@@ -37,11 +37,11 @@
       },
       {
         "keyword": "station",
-        "count": 423
+        "count": 400
       },
       {
         "keyword": "schedule",
-        "count": 46
+        "count": 44
       },
       {
         "keyword": "tennis",
@@ -49,7 +49,7 @@
       },
       {
         "keyword": "atp",
-        "count": 6
+        "count": 3
       },
       {
         "keyword": "wta",
@@ -64,8 +64,12 @@
         "count": 2
       },
       {
+        "keyword": "football",
+        "count": 20
+      },
+      {
         "keyword": "wm",
-        "count": 250
+        "count": 222
       }
     ]
   },
@@ -74,8 +78,8 @@
     "final_url": "https://www.primevideo.com/-/en/livetv",
     "ok": true,
     "error": "",
-    "bytes": 1501255,
-    "json_blocks": 74,
+    "bytes": 1463898,
+    "json_blocks": 72,
     "html_keyword_hits": [
       {
         "keyword": "prime",
@@ -87,11 +91,11 @@
       },
       {
         "keyword": "sport",
-        "count": 102
+        "count": 107
       },
       {
         "keyword": "sports",
-        "count": 81
+        "count": 86
       },
       {
         "keyword": "live tv",
@@ -99,11 +103,11 @@
       },
       {
         "keyword": "livetv",
-        "count": 152
+        "count": 153
       },
       {
         "keyword": "linear",
-        "count": 2218
+        "count": 2181
       },
       {
         "keyword": "channel",
@@ -111,19 +115,27 @@
       },
       {
         "keyword": "station",
-        "count": 425
+        "count": 402
       },
       {
         "keyword": "schedule",
-        "count": 47
+        "count": 45
       },
       {
         "keyword": "tennis",
         "count": 2
       },
       {
+        "keyword": "wta",
+        "count": 6
+      },
+      {
+        "keyword": "football",
+        "count": 22
+      },
+      {
         "keyword": "wm",
-        "count": 289
+        "count": 222
       },
       {
         "keyword": "soccer",
@@ -134,92 +146,23 @@
   {
     "url": "https://www.primevideo.com/-/de/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
     "final_url": "https://www.primevideo.com/-/de/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
-    "ok": true,
-    "error": "",
-    "bytes": 1530175,
-    "json_blocks": 123,
-    "html_keyword_hits": [
-      {
-        "keyword": "prime",
-        "count": 432
-      },
-      {
-        "keyword": "prime video",
-        "count": 16
-      },
-      {
-        "keyword": "sport",
-        "count": 780
-      },
-      {
-        "keyword": "sports",
-        "count": 417
-      },
-      {
-        "keyword": "livetv",
-        "count": 4
-      },
-      {
-        "keyword": "linear",
-        "count": 1382
-      },
-      {
-        "keyword": "channel",
-        "count": 958
-      },
-      {
-        "keyword": "station",
-        "count": 211
-      },
-      {
-        "keyword": "schedule",
-        "count": 21
-      },
-      {
-        "keyword": "tennis",
-        "count": 71
-      },
-      {
-        "keyword": "australian open",
-        "count": 3
-      },
-      {
-        "keyword": "atp",
-        "count": 13
-      },
-      {
-        "keyword": "fußball",
-        "count": 7
-      },
-      {
-        "keyword": "football",
-        "count": 48
-      },
-      {
-        "keyword": "world cup",
-        "count": 13
-      },
-      {
-        "keyword": "wm",
-        "count": 375
-      },
-      {
-        "keyword": "soccer",
-        "count": 17
-      }
-    ]
+    "ok": false,
+    "error": "HTTPError: HTTP Error 503: Service Temporarily Unavailable",
+    "bytes": 0,
+    "json_blocks": 0,
+    "html_keyword_hits": []
   },
   {
     "url": "https://www.primevideo.com/-/en/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
     "final_url": "https://www.primevideo.com/-/en/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
     "ok": true,
     "error": "",
-    "bytes": 1543405,
-    "json_blocks": 123,
+    "bytes": 1713395,
+    "json_blocks": 137,
     "html_keyword_hits": [
       {
         "keyword": "prime",
-        "count": 441
+        "count": 454
       },
       {
         "keyword": "prime video",
@@ -227,11 +170,11 @@
       },
       {
         "keyword": "sport",
-        "count": 424
+        "count": 543
       },
       {
         "keyword": "sports",
-        "count": 401
+        "count": 512
       },
       {
         "keyword": "live tv",
@@ -243,11 +186,11 @@
       },
       {
         "keyword": "linear",
-        "count": 1382
+        "count": 1371
       },
       {
         "keyword": "channel",
-        "count": 964
+        "count": 1574
       },
       {
         "keyword": "station",
@@ -267,23 +210,23 @@
       },
       {
         "keyword": "atp",
-        "count": 9
+        "count": 15
       },
       {
         "keyword": "football",
-        "count": 96
+        "count": 94
       },
       {
         "keyword": "world cup",
-        "count": 19
+        "count": 12
       },
       {
         "keyword": "wm",
-        "count": 404
+        "count": 413
       },
       {
         "keyword": "soccer",
-        "count": 36
+        "count": 35
       }
     ]
   },
@@ -292,12 +235,12 @@
     "final_url": "https://www.amazon.de/-/de/gp/video/livetv",
     "ok": true,
     "error": "",
-    "bytes": 1781404,
-    "json_blocks": 99,
+    "bytes": 1724712,
+    "json_blocks": 95,
     "html_keyword_hits": [
       {
         "keyword": "prime",
-        "count": 126
+        "count": 124
       },
       {
         "keyword": "amazon prime",
@@ -321,19 +264,19 @@
       },
       {
         "keyword": "linear",
-        "count": 3257
+        "count": 3105
       },
       {
         "keyword": "channel",
-        "count": 127
+        "count": 125
       },
       {
         "keyword": "station",
-        "count": 598
+        "count": 563
       },
       {
         "keyword": "schedule",
-        "count": 47
+        "count": 45
       },
       {
         "keyword": "tennis",
@@ -341,11 +284,7 @@
       },
       {
         "keyword": "atp",
-        "count": 1
-      },
-      {
-        "keyword": "wta",
-        "count": 3
+        "count": 6
       },
       {
         "keyword": "fußball",
@@ -357,11 +296,11 @@
       },
       {
         "keyword": "football",
-        "count": 1
+        "count": 25
       },
       {
         "keyword": "wm",
-        "count": 349
+        "count": 337
       }
     ]
   },
@@ -370,12 +309,12 @@
     "final_url": "https://www.amazon.de/-/en/gp/video/livetv",
     "ok": true,
     "error": "",
-    "bytes": 1781708,
-    "json_blocks": 99,
+    "bytes": 1715782,
+    "json_blocks": 95,
     "html_keyword_hits": [
       {
         "keyword": "prime",
-        "count": 125
+        "count": 123
       },
       {
         "keyword": "amazon prime",
@@ -387,11 +326,11 @@
       },
       {
         "keyword": "sport",
-        "count": 120
+        "count": 122
       },
       {
         "keyword": "sports",
-        "count": 96
+        "count": 98
       },
       {
         "keyword": "live tv",
@@ -403,19 +342,19 @@
       },
       {
         "keyword": "linear",
-        "count": 3257
+        "count": 3105
       },
       {
         "keyword": "channel",
-        "count": 127
+        "count": 125
       },
       {
         "keyword": "station",
-        "count": 600
+        "count": 565
       },
       {
         "keyword": "schedule",
-        "count": 49
+        "count": 47
       },
       {
         "keyword": "tennis",
@@ -430,8 +369,12 @@
         "count": 3
       },
       {
+        "keyword": "football",
+        "count": 28
+      },
+      {
         "keyword": "wm",
-        "count": 352
+        "count": 281
       },
       {
         "keyword": "soccer",
@@ -444,7 +387,7 @@
     "final_url": "https://www.amazon.de/-/de/gp/video/sports",
     "ok": true,
     "error": "",
-    "bytes": 820745,
+    "bytes": 822393,
     "json_blocks": 78,
     "html_keyword_hits": [
       {
@@ -493,7 +436,7 @@
       },
       {
         "keyword": "wm",
-        "count": 178
+        "count": 171
       },
       {
         "keyword": "soccer",
@@ -506,7 +449,7 @@
     "final_url": "https://www.amazon.de/-/en/gp/video/sports",
     "ok": true,
     "error": "",
-    "bytes": 814295,
+    "bytes": 813704,
     "json_blocks": 78,
     "html_keyword_hits": [
       {
@@ -551,7 +494,7 @@
       },
       {
         "keyword": "wm",
-        "count": 181
+        "count": 169
       },
       {
         "keyword": "soccer",
