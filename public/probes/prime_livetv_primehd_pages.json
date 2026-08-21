@@ -2,76 +2,11 @@
   {
     "url": "https://www.primevideo.com/-/de/livetv",
     "final_url": "https://www.primevideo.com/-/de/livetv",
-    "ok": true,
-    "error": "",
-    "bytes": 1449838,
-    "json_blocks": 74,
-    "html_keyword_hits": [
-      {
-        "keyword": "prime",
-        "count": 97
-      },
-      {
-        "keyword": "prime video",
-        "count": 16
-      },
-      {
-        "keyword": "sport",
-        "count": 102
-      },
-      {
-        "keyword": "sports",
-        "count": 69
-      },
-      {
-        "keyword": "livetv",
-        "count": 152
-      },
-      {
-        "keyword": "linear",
-        "count": 2145
-      },
-      {
-        "keyword": "channel",
-        "count": 169
-      },
-      {
-        "keyword": "station",
-        "count": 410
-      },
-      {
-        "keyword": "schedule",
-        "count": 46
-      },
-      {
-        "keyword": "tennis",
-        "count": 2
-      },
-      {
-        "keyword": "atp",
-        "count": 3
-      },
-      {
-        "keyword": "wta",
-        "count": 6
-      },
-      {
-        "keyword": "fußball",
-        "count": 4
-      },
-      {
-        "keyword": "fussball",
-        "count": 6
-      },
-      {
-        "keyword": "wm",
-        "count": 261
-      },
-      {
-        "keyword": "soccer",
-        "count": 2
-      }
-    ]
+    "ok": false,
+    "error": "HTTPError: HTTP Error 503: Service Temporarily Unavailable",
+    "bytes": 0,
+    "json_blocks": 0,
+    "html_keyword_hits": []
   },
   {
     "url": "https://www.primevideo.com/-/en/livetv",
@@ -85,20 +20,166 @@
   {
     "url": "https://www.primevideo.com/-/de/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
     "final_url": "https://www.primevideo.com/-/de/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
-    "ok": false,
-    "error": "HTTPError: HTTP Error 503: Service Temporarily Unavailable",
-    "bytes": 0,
-    "json_blocks": 0,
-    "html_keyword_hits": []
+    "ok": true,
+    "error": "",
+    "bytes": 1527107,
+    "json_blocks": 125,
+    "html_keyword_hits": [
+      {
+        "keyword": "prime",
+        "count": 440
+      },
+      {
+        "keyword": "prime video",
+        "count": 16
+      },
+      {
+        "keyword": "sport",
+        "count": 694
+      },
+      {
+        "keyword": "sports",
+        "count": 345
+      },
+      {
+        "keyword": "livetv",
+        "count": 4
+      },
+      {
+        "keyword": "linear",
+        "count": 1375
+      },
+      {
+        "keyword": "channel",
+        "count": 1131
+      },
+      {
+        "keyword": "station",
+        "count": 211
+      },
+      {
+        "keyword": "schedule",
+        "count": 21
+      },
+      {
+        "keyword": "tennis",
+        "count": 53
+      },
+      {
+        "keyword": "australian open",
+        "count": 3
+      },
+      {
+        "keyword": "atp",
+        "count": 21
+      },
+      {
+        "keyword": "wta",
+        "count": 6
+      },
+      {
+        "keyword": "fußball",
+        "count": 7
+      },
+      {
+        "keyword": "football",
+        "count": 53
+      },
+      {
+        "keyword": "world cup",
+        "count": 6
+      },
+      {
+        "keyword": "wm",
+        "count": 346
+      },
+      {
+        "keyword": "soccer",
+        "count": 34
+      }
+    ]
   },
   {
     "url": "https://www.primevideo.com/-/en/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
     "final_url": "https://www.primevideo.com/-/en/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
-    "ok": false,
-    "error": "HTTPError: HTTP Error 503: Service Temporarily Unavailable",
-    "bytes": 0,
-    "json_blocks": 0,
-    "html_keyword_hits": []
+    "ok": true,
+    "error": "",
+    "bytes": 1545107,
+    "json_blocks": 125,
+    "html_keyword_hits": [
+      {
+        "keyword": "prime",
+        "count": 449
+      },
+      {
+        "keyword": "prime video",
+        "count": 16
+      },
+      {
+        "keyword": "sport",
+        "count": 427
+      },
+      {
+        "keyword": "sports",
+        "count": 396
+      },
+      {
+        "keyword": "live tv",
+        "count": 7
+      },
+      {
+        "keyword": "livetv",
+        "count": 4
+      },
+      {
+        "keyword": "linear",
+        "count": 1375
+      },
+      {
+        "keyword": "channel",
+        "count": 1137
+      },
+      {
+        "keyword": "station",
+        "count": 216
+      },
+      {
+        "keyword": "schedule",
+        "count": 22
+      },
+      {
+        "keyword": "tennis",
+        "count": 44
+      },
+      {
+        "keyword": "australian open",
+        "count": 3
+      },
+      {
+        "keyword": "atp",
+        "count": 27
+      },
+      {
+        "keyword": "wta",
+        "count": 19
+      },
+      {
+        "keyword": "football",
+        "count": 105
+      },
+      {
+        "keyword": "world cup",
+        "count": 8
+      },
+      {
+        "keyword": "wm",
+        "count": 347
+      },
+      {
+        "keyword": "soccer",
+        "count": 47
+      }
+    ]
   },
   {
     "url": "https://www.amazon.de/-/de/gp/video/livetv",
@@ -130,9 +211,9 @@
   {
     "url": "https://www.amazon.de/-/en/gp/video/sports",
     "final_url": "https://www.amazon.de/-/en/gp/video/sports",
-    "ok": true,
-    "error": "",
-    "bytes": 3817,
+    "ok": false,
+    "error": "HTTPError: HTTP Error 503: Service Unavailable",
+    "bytes": 0,
     "json_blocks": 0,
     "html_keyword_hits": []
   }
