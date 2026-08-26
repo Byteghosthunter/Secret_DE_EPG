@@ -1,6 +1,6 @@
 {
   "ok": true,
-  "generated_at_utc": "2026-08-26T13:51:07.173780+00:00",
+  "generated_at_utc": "2026-08-26T14:39:51.346137+00:00",
   "urls": [
     "https://www.primevideo.com/-/de/livetv",
     "https://www.primevideo.com/-/en/livetv",
@@ -13,14 +13,14 @@
   ],
   "pages_total": 8,
   "pages_ok": 7,
-  "discovered_links": 991,
+  "discovered_links": 744,
   "fetched_links": 100,
   "fetched_links_ok": 100,
-  "stations": 66913,
-  "schedule_events": 7725,
-  "prime_candidates": 71486,
-  "prime_sport_candidates": 28264,
-  "hints": 90782,
+  "stations": 65432,
+  "schedule_events": 7662,
+  "prime_candidates": 73094,
+  "prime_sport_candidates": 29470,
+  "hints": 89079,
   "top_station_titles": [
     [
       "Live ansehen",
@@ -28,708 +28,792 @@
     ],
     [
       "Season 3",
-      1639
+      1596
     ],
     [
       "Season 7",
-      1419
+      1382
     ],
     [
       "ABC News Live",
-      645
-    ],
-    [
-      "Season 2026",
-      550
+      615
     ],
     [
       "LiveNOW from FOX",
-      525
+      501
     ],
     [
       "CNN Headline Express",
-      430
+      410
     ],
     [
-      "ABC News Live First",
-      430
-    ],
-    [
-      "CNN News Central",
-      378
+      "Season 2026",
+      407
     ],
     [
       "Beetlejuice Beetlejuice",
-      336
-    ],
-    [
-      "Wenn es dunkel wird",
-      322
-    ],
-    [
-      "Die Verlegerin",
       320
-    ],
-    [
-      "Noch Tausend Worte",
-      320
-    ],
-    [
-      "LiveNOW by FOX",
-      306
-    ],
-    [
-      "The Kyles Go to Hawaii",
-      258
-    ],
-    [
-      "Quebec",
-      256
-    ],
-    [
-      "Tangier, Morocco",
-      256
-    ],
-    [
-      "What We Know With Max Foster",
-      252
-    ],
-    [
-      "One World With Zain Asher and Bianna Golodryga",
-      252
-    ],
-    [
-      "Die Geister",
-      240
-    ],
-    [
-      "Der Canyon",
-      240
-    ],
-    [
-      "Sport",
-      227
-    ],
-    [
-      "FOX News Talk",
-      220
-    ],
-    [
-      "The Walking Dead Channel",
-      215
-    ],
-    [
-      "beIN SPORTS",
-      215
-    ],
-    [
-      "MGM+ MARQUEE",
-      215
-    ],
-    [
-      "MGM+ DRIVE-IN",
-      215
-    ],
-    [
-      "MGM+ HITS",
-      215
-    ],
-    [
-      "Fox Weather",
-      215
-    ],
-    [
-      "Fox Justice",
-      215
-    ],
-    [
-      "CNN Originals",
-      213
-    ],
-    [
-      "AMC",
-      210
-    ],
-    [
-      "IFC",
-      210
-    ],
-    [
-      "Sundance TV",
-      210
-    ],
-    [
-      "BBC America",
-      210
-    ],
-    [
-      "AMC +",
-      210
-    ],
-    [
-      "beIN SPORTS en Español",
-      210
-    ],
-    [
-      "Cinemax Action",
-      210
-    ],
-    [
-      "Cinemax HD East",
-      210
     ],
     [
       "Adult Best Friends",
+      320
+    ],
+    [
+      "Die Verlegerin",
+      312
+    ],
+    [
+      "Noch Tausend Worte",
+      312
+    ],
+    [
+      "LiveNOW by FOX",
+      292
+    ],
+    [
+      "The Kyles Go to Hawaii",
+      246
+    ],
+    [
+      "ABC News Live First",
+      246
+    ],
+    [
+      "ABC News Live Reports",
+      246
+    ],
+    [
+      "Tangier, Morocco",
+      244
+    ],
+    [
+      "Libya",
+      244
+    ],
+    [
+      "Round of 16 (2nd Leg)",
+      240
+    ],
+    [
+      "CNN News Central",
+      240
+    ],
+    [
+      "What We Know With Max Foster",
+      240
+    ],
+    [
+      "One World With Zain Asher and Bianna Golodryga",
+      240
+    ],
+    [
+      "Wenn es dunkel wird",
+      234
+    ],
+    [
+      "Der Canyon",
+      234
+    ],
+    [
+      "Die Prophezeiung",
+      234
+    ],
+    [
+      "Sport",
+      226
+    ],
+    [
+      "FOX News Talk",
       210
+    ],
+    [
+      "The Walking Dead Channel",
+      205
+    ],
+    [
+      "MGM+ MARQUEE",
+      205
+    ],
+    [
+      "MGM+ DRIVE-IN",
+      205
+    ],
+    [
+      "MGM+ HITS",
+      205
+    ],
+    [
+      "Fox Weather",
+      205
+    ],
+    [
+      "Fox Justice",
+      205
+    ],
+    [
+      "CNN Originals",
+      203
+    ],
+    [
+      "AMC",
+      200
+    ],
+    [
+      "IFC",
+      200
+    ],
+    [
+      "Sundance TV",
+      200
+    ],
+    [
+      "BBC America",
+      200
+    ],
+    [
+      "AMC +",
+      200
+    ],
+    [
+      "beIN SPORTS",
+      200
+    ],
+    [
+      "beIN SPORTS en Español",
+      200
+    ],
+    [
+      "Cinemax Action",
+      200
+    ],
+    [
+      "Cinemax HD East",
+      200
+    ],
+    [
+      "Queer",
+      200
     ],
     [
       "Cinemax Classics",
-      210
+      200
     ],
     [
       "Cinemax West",
-      210
+      200
     ],
     [
       "Cinemax Hits",
-      210
+      200
     ],
     [
       "MAX Latino East",
-      210
+      200
     ],
     [
       "CNN Stream",
-      210
+      200
     ],
     [
       "CNN International",
-      210
+      200
     ],
     [
       "MGM+",
-      210
-    ],
-    [
-      "Wenn Liebe so einfach wäre",
       200
     ],
     [
       "Prime-Mitglied werden",
+      198
+    ],
+    [
+      "Wenn Liebe so einfach wäre",
       195
     ],
     [
-      "Season 1",
+      "Paid Programming",
       192
     ],
     [
-      "Libya",
-      178
-    ],
-    [
       "In Case You Missed It",
-      172
+      164
     ],
     [
       "American Pulse",
-      172
-    ],
-    [
-      "Table for Too Many",
-      172
+      164
     ],
     [
       "The Anniversary",
-      172
+      164
     ],
     [
-      "ABC News Live Reports",
-      172
-    ],
-    [
-      "Die Top Ten der Alien-Petroglyphen",
+      "Searched",
       164
     ],
     [
       "Ägyptische Götter",
-      164
+      160
     ],
     [
       "Fremde Besucher",
-      164
+      160
     ],
     [
-      "Der Tote im Scherbenhaufen",
+      "Mysterium Talisman",
       160
     ],
     [
       "Scherbenhaufen",
-      160
+      156
     ],
     [
       "Kugelhagel",
-      160
+      156
     ],
     [
       "Jetzt kostenlos testen {lineBreak} beIN SPORTS CONNECT",
-      158
+      156
     ],
     [
       "ION",
-      140
+      134
     ],
     [
       "Weather Command",
-      136
+      130
     ],
     [
       "America's Weather Center",
-      136
+      130
     ],
     [
       "FOX Weather Now",
-      136
+      130
+    ],
+    [
+      "FOX Weather Live",
+      130
     ],
     [
       "September 5",
-      132
+      126
     ],
     [
       "The Brian Kilmeade Show",
-      132
+      126
     ],
     [
       "FOX Across America With Jimmy Failla",
-      132
+      126
     ],
     [
       "The Guy Benson Show",
-      132
+      126
     ],
     [
-      "Arizona PBS (PBS KAET)",
-      129
+      "FOX News Radio",
+      126
+    ],
+    [
+      "KQED (PBS KQED)",
+      123
     ],
     [
       "Law & Order",
-      129
+      123
     ],
     [
       "BET x Tyler Perry Comedy",
-      129
+      123
     ],
     [
       "Murder, She Wrote",
-      129
+      123
     ],
     [
       "The Incredible Dr. Pol",
-      129
+      123
     ],
     [
       "CNN Headlines",
-      129
+      123
     ],
     [
       "Ancient Aliens",
-      129
+      123
     ],
     [
       "My Wife and Kids",
-      129
+      123
     ],
     [
       "In The Heat Of The Night",
-      129
+      123
     ],
     [
       "NBC Comedy Vault",
-      129
-    ],
-    [
-      "USPA Polo: Breakaway, Polo IN College",
-      129
-    ],
-    [
-      "World Rowing Championships 2026",
-      129
-    ],
-    [
-      "Grand Prix de Monaco Historique 2026",
-      129
-    ],
-    [
-      "Round of 16 (2nd Leg)",
-      129
-    ],
-    [
-      "GKA Kite World Tour",
-      129
-    ],
-    [
-      "Lausanne, Vienna vs. Baskets Bonn",
-      129
-    ],
-    [
-      "Lausanne, Antwerp vs. Raudondvaris Hoptrans",
-      129
-    ],
-    [
-      "ICF Slalom World Championships, Day 5",
-      129
-    ],
-    [
-      "The Sports Rundown",
-      129
+      123
     ],
     [
       "Hannibal",
-      129
+      123
     ],
     [
       "Rocky",
-      129
+      123
+    ],
+    [
+      "Rocky II",
+      123
     ],
     [
       "Rambo III",
-      129
+      123
+    ],
+    [
+      "Criminal Law",
+      123
     ],
     [
       "Hostile Border",
-      129
+      123
     ],
     [
       "De-Lovely",
-      129
+      123
     ],
     [
       "Weekend in Taipei",
-      129
+      123
     ],
     [
       "Supernova",
-      129
+      123
     ],
     [
       "Afterburn",
-      129
+      123
     ],
     [
-      "The Task Force",
-      129
+      "Mercy",
+      123
     ],
     [
-      "26 Hours",
-      129
+      "The One That Got Away",
+      123
+    ],
+    [
+      "Interview With Evil",
+      123
+    ],
+    [
+      "Scandalous: ABSCAM",
+      123
+    ],
+    [
+      "Missing on the Mountain",
+      123
+    ],
+    [
+      "Confessions of a Killer",
+      123
+    ],
+    [
+      "Surviving Bundy With Nancy Grace",
+      123
     ]
   ],
   "top_event_titles": [
     [
-      "LiveNOW by FOX",
-      175
+      "Season 2026",
+      180
     ],
     [
-      "Season 2026",
-      148
+      "LiveNOW by FOX",
+      167
     ],
     [
       "FOX News Talk",
-      132
+      126
     ],
     [
       "The Walking Dead Channel",
-      129
-    ],
-    [
-      "beIN SPORTS",
-      129
+      123
     ],
     [
       "MGM+ MARQUEE",
-      129
+      123
     ],
     [
       "MGM+ DRIVE-IN",
-      129
+      123
     ],
     [
       "MGM+ HITS",
-      129
+      123
     ],
     [
       "Fox Weather",
-      129
+      123
     ],
     [
       "Fox Justice",
-      129
+      123
     ],
     [
       "CNN Originals",
-      128
+      122
     ],
     [
       "AMC",
-      126
+      120
     ],
     [
       "IFC",
-      126
+      120
     ],
     [
       "Sundance TV",
-      126
+      120
     ],
     [
       "BBC America",
-      126
+      120
     ],
     [
       "AMC +",
-      126
+      120
+    ],
+    [
+      "beIN SPORTS",
+      120
     ],
     [
       "beIN SPORTS en Español",
-      126
+      120
     ],
     [
       "Cinemax Action",
-      126
+      120
     ],
     [
       "Cinemax HD East",
-      126
+      120
     ],
     [
       "Cinemax Classics",
-      126
+      120
     ],
     [
       "Cinemax West",
-      126
+      120
     ],
     [
       "Cinemax Hits",
-      126
+      120
     ],
     [
       "MAX Latino East",
-      126
+      120
     ],
     [
       "CNN Stream",
-      126
+      120
     ],
     [
       "CNN International",
-      126
+      120
     ],
     [
       "MGM+",
-      126
+      120
+    ],
+    [
+      "Diamondbacks - Giants",
+      98
     ],
     [
       "ION",
-      92
+      88
     ],
     [
-      "Arizona PBS (PBS KAET)",
-      86
+      "KQED (PBS KQED)",
+      82
     ],
     [
       "Law & Order",
-      86
+      82
     ],
     [
       "BET x Tyler Perry Comedy",
-      86
+      82
     ],
     [
       "Murder, She Wrote",
-      86
+      82
     ],
     [
       "The Incredible Dr. Pol",
-      86
+      82
     ],
     [
       "CNN Headlines",
-      86
+      82
     ],
     [
       "Ancient Aliens",
-      86
+      82
     ],
     [
       "My Wife and Kids",
-      86
+      82
     ],
     [
       "ABC News Live",
-      86
+      82
     ],
     [
       "In The Heat Of The Night",
-      86
+      82
     ],
     [
       "NBC Comedy Vault",
-      86
+      82
     ],
     [
       "Dateline 24/7",
-      84
+      80
     ],
     [
       "The First 48 by A&E",
-      84
+      80
     ],
     [
       "Judy Justice",
-      84
+      80
     ],
     [
       "IShowSpeed",
-      84
+      80
     ],
     [
       "Ben Azelart",
-      84
+      80
     ],
     [
       "20/20",
-      84
+      80
     ],
     [
       "Paternity Court",
-      84
+      80
     ],
     [
-      "Leagues Cup Countdown",
-      36
-    ],
-    [
-      "Leagues Cup La Previa",
-      36
-    ],
-    [
-      "AEK Athens vs. Levski",
-      35
-    ],
-    [
-      "Viking vs. Dinamo Zagreb",
-      35
-    ],
-    [
-      "Lyon vs. Fenerbahçe",
-      35
-    ],
-    [
-      "Celje vs. Slovan Bratislava",
-      35
-    ],
-    [
-      "Toluca FC - Austin FC",
-      33
-    ],
-    [
-      "Spurs vs. Charlton",
-      27
-    ],
-    [
-      "Bradford vs. Burnley",
-      27
-    ],
-    [
-      "Preston vs. Everton",
-      27
-    ],
-    [
-      "Newcastle United - West Bromwich Albion",
-      27
-    ],
-    [
-      "América de Cali SA vs. CD Popular Junior FC SA",
-      27
-    ],
-    [
-      "CS Herediano vs. Antigua GFC",
-      27
-    ],
-    [
-      "CD Marathon vs. Real Estelí",
-      27
-    ],
-    [
-      "Club Independiente Santa Fe vs. CA River Plate",
-      27
-    ],
-    [
-      "Marathón vs. Real Estelí",
-      27
-    ],
-    [
-      "Palmeiras vs. Santos",
-      27
-    ],
-    [
-      "Club Atlético Nacional SA vs. Asociación Deportivo Cali",
-      27
-    ],
-    [
-      "Club Xelajú vs. LA Firpo",
-      27
-    ],
-    [
-      "LD Alajuelense vs. Plaza Amador",
-      27
-    ],
-    [
-      "Tszyu vs. Mahoney",
-      20
-    ],
-    [
-      "Top End T20 Series 2026 - 18th Match - Nepal vs ACT Comets",
-      18
+      "Dodgers - Braves",
+      42
     ],
     [
       "British National Squash Championships 2026 - Glass Court - August 26",
-      18
+      39
     ],
     [
       "European T20 Premier League 2026 - 1st Match - Rotterdam Dockers vs Amsterdam Flames",
-      18
+      39
     ],
     [
       "Rotterdam Dockers vs. Amsterdam Flames",
-      18
+      39
     ],
     [
       "World Rowing Championships 2026",
-      18
+      39
     ],
     [
-      "F1 Weekend Warm-Up",
-      16
+      "Crawley vs. Ovcharenko",
+      36
+    ],
+    [
+      "Spurs vs. Charlton",
+      36
+    ],
+    [
+      "Red Sox - Yankees",
+      36
+    ],
+    [
+      "Orioles - Athletics",
+      36
+    ],
+    [
+      "Sioux Falls Canaries at Fairfield",
+      35
+    ],
+    [
+      "Dodgers - Tigers",
+      35
+    ],
+    [
+      "Loco Beach Coconuts vs. Savannah Bananas",
+      35
+    ],
+    [
+      "Mariners - Blue Jays",
+      35
+    ],
+    [
+      "MLB esta semana",
+      35
+    ],
+    [
+      "Sprint & Paracanoe World Championships, Poland",
+      33
+    ],
+    [
+      "La Vuelta a España: Stage 5",
+      33
+    ],
+    [
+      "Cabrera vs. Sawangkaew",
+      33
+    ],
+    [
+      "Bison 1660 - The Insiders",
+      33
+    ],
+    [
+      "Tian vs. Valentova",
+      33
+    ],
+    [
+      "Center Court Live-US Open Qualifying 2nd Round; Winston-Salem-ATP & Monterrey-WTA Early Rounds",
+      33
+    ],
+    [
+      "Giants - Pirates",
+      33
+    ],
+    [
+      "Giants - Mets",
+      33
+    ],
+    [
+      "Rays - Tigers",
+      30
+    ],
+    [
+      "Reds - Giants",
+      30
+    ],
+    [
+      "Cardinals - Giants",
+      24
+    ],
+    [
+      "Bradford vs. Burnley",
+      24
+    ],
+    [
+      "Preston vs. Everton",
+      24
+    ],
+    [
+      "Newcastle United - West Bromwich Albion",
+      24
+    ],
+    [
+      "Giants - Cardinals",
+      21
+    ],
+    [
+      "Red Sox - Marlins",
+      21
+    ],
+    [
+      "MLB Big Inning: 8.26.26",
+      21
+    ],
+    [
+      "Sioux Falls Canaries at Fargo-Moorhead RedHawks",
+      21
+    ],
+    [
+      "Twins - Athletics",
+      21
+    ],
+    [
+      "AWA Wiffle",
+      21
+    ],
+    [
+      "Japan vs. Cuba",
+      21
+    ],
+    [
+      "Great Britain vs. Chinese Taipei",
+      21
+    ],
+    [
+      "Rockies - Nationals",
+      21
+    ],
+    [
+      "Los Angeles vs. New York",
+      21
+    ],
+    [
+      "MLB Big Inning: 8.27.26",
+      21
+    ],
+    [
+      "Kansas City Monarchs at Winnipeg Goldeyes",
+      21
+    ],
+    [
+      "Lindsay Clancy murder trial resumes",
+      21
+    ],
+    [
+      "Fans remember Dolly Parton",
+      21
+    ],
+    [
+      "Astros - Mets",
+      21
+    ],
+    [
+      "MLB Big Inning: 8.28.26",
+      21
+    ],
+    [
+      "Phillies - Angels",
+      21
+    ],
+    [
+      "Marlins - Nationals",
+      21
+    ],
+    [
+      "Padres - Rays",
+      21
+    ],
+    [
+      "Milwaukee Milkmen at Fargo-Moorhead RedHawks",
+      21
     ],
     [
       "CBS Sports HQ",
       15
     ],
     [
-      "Leagues Cup El Resumen",
+      "Texas Tailgaters vs. Party Animals",
       15
     ],
     [
-      "Sprint & Paracanoe World Championships, Poland",
+      "Toluca FC - Austin FC",
       12
     ],
     [
       "Aug 26 - PTT Glasgow",
-      12
-    ],
-    [
-      "La Vuelta a España: Stage 5",
       12
     ],
     [
@@ -739,90 +823,6 @@
     [
       "Aug 26 - PTT Boise",
       12
-    ],
-    [
-      "Cabrera vs. Sawangkaew",
-      12
-    ],
-    [
-      "Bison 1660 - The Insiders",
-      12
-    ],
-    [
-      "Tian vs. Valentova",
-      12
-    ],
-    [
-      "Tennis Channel 2",
-      12
-    ],
-    [
-      "CBS Sports Golazo Network",
-      12
-    ],
-    [
-      "MLS La Previa",
-      12
-    ],
-    [
-      "Alajuelense vs. Plaza Amador",
-      12
-    ],
-    [
-      "Jesser",
-      10
-    ],
-    [
-      "Celine Dept",
-      10
-    ],
-    [
-      "Jesse James West",
-      10
-    ],
-    [
-      "Futcrunch",
-      10
-    ],
-    [
-      "FloRacing 24/7",
-      10
-    ],
-    [
-      "Willow Sports",
-      10
-    ],
-    [
-      "Ryz Sports",
-      10
-    ],
-    [
-      "RugbyPass TV",
-      10
-    ],
-    [
-      "Pickleballtv",
-      10
-    ],
-    [
-      "Scripps Sports",
-      10
-    ],
-    [
-      "World Poker Tour",
-      10
-    ],
-    [
-      "HBO Boxing",
-      10
-    ],
-    [
-      "Billiard TV",
-      10
-    ],
-    [
-      "Monster Jam",
-      10
     ]
   ],
   "files": {
