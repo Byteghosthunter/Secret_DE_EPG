@@ -2,146 +2,32 @@
   {
     "url": "https://www.primevideo.com/-/de/livetv",
     "final_url": "https://www.primevideo.com/-/de/livetv",
-    "ok": true,
-    "error": "",
-    "bytes": 1688419,
-    "json_blocks": 76,
-    "html_keyword_hits": [
-      {
-        "keyword": "prime",
-        "count": 87
-      },
-      {
-        "keyword": "prime video",
-        "count": 16
-      },
-      {
-        "keyword": "sport",
-        "count": 102
-      },
-      {
-        "keyword": "sports",
-        "count": 77
-      },
-      {
-        "keyword": "livetv",
-        "count": 113
-      },
-      {
-        "keyword": "linear",
-        "count": 2433
-      },
-      {
-        "keyword": "channel",
-        "count": 170
-      },
-      {
-        "keyword": "station",
-        "count": 1286
-      },
-      {
-        "keyword": "schedule",
-        "count": 46
-      },
-      {
-        "keyword": "atp",
-        "count": 6
-      },
-      {
-        "keyword": "wta",
-        "count": 6
-      },
-      {
-        "keyword": "fußball",
-        "count": 2
-      },
-      {
-        "keyword": "fussball",
-        "count": 14
-      },
-      {
-        "keyword": "wm",
-        "count": 258
-      }
-    ]
+    "ok": false,
+    "error": "HTTPError: HTTP Error 503: Service Temporarily Unavailable",
+    "bytes": 0,
+    "json_blocks": 0,
+    "html_keyword_hits": []
   },
   {
     "url": "https://www.primevideo.com/-/en/livetv",
     "final_url": "https://www.primevideo.com/-/en/livetv",
-    "ok": true,
-    "error": "",
-    "bytes": 1669908,
-    "json_blocks": 76,
-    "html_keyword_hits": [
-      {
-        "keyword": "prime",
-        "count": 87
-      },
-      {
-        "keyword": "prime video",
-        "count": 16
-      },
-      {
-        "keyword": "sport",
-        "count": 100
-      },
-      {
-        "keyword": "sports",
-        "count": 88
-      },
-      {
-        "keyword": "live tv",
-        "count": 11
-      },
-      {
-        "keyword": "livetv",
-        "count": 113
-      },
-      {
-        "keyword": "linear",
-        "count": 2433
-      },
-      {
-        "keyword": "channel",
-        "count": 178
-      },
-      {
-        "keyword": "station",
-        "count": 1290
-      },
-      {
-        "keyword": "schedule",
-        "count": 47
-      },
-      {
-        "keyword": "wta",
-        "count": 9
-      },
-      {
-        "keyword": "football",
-        "count": 1
-      },
-      {
-        "keyword": "wm",
-        "count": 242
-      },
-      {
-        "keyword": "soccer",
-        "count": 17
-      }
-    ]
+    "ok": false,
+    "error": "HTTPError: HTTP Error 503: Service Temporarily Unavailable",
+    "bytes": 0,
+    "json_blocks": 0,
+    "html_keyword_hits": []
   },
   {
     "url": "https://www.primevideo.com/-/de/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
     "final_url": "https://www.primevideo.com/-/de/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
     "ok": true,
     "error": "",
-    "bytes": 1206325,
-    "json_blocks": 112,
+    "bytes": 1196225,
+    "json_blocks": 113,
     "html_keyword_hits": [
       {
         "keyword": "prime",
-        "count": 461
+        "count": 460
       },
       {
         "keyword": "prime video",
@@ -149,11 +35,11 @@
       },
       {
         "keyword": "sport",
-        "count": 305
+        "count": 303
       },
       {
         "keyword": "sports",
-        "count": 243
+        "count": 241
       },
       {
         "keyword": "livetv",
@@ -165,7 +51,7 @@
       },
       {
         "keyword": "channel",
-        "count": 1786
+        "count": 1626
       },
       {
         "keyword": "station",
@@ -181,19 +67,19 @@
       },
       {
         "keyword": "fußball",
-        "count": 8
+        "count": 7
       },
       {
         "keyword": "football",
-        "count": 9
+        "count": 11
       },
       {
         "keyword": "wm",
-        "count": 187
+        "count": 174
       },
       {
         "keyword": "soccer",
-        "count": 15
+        "count": 16
       }
     ]
   },
@@ -202,24 +88,24 @@
     "final_url": "https://www.primevideo.com/-/en/sports?ref_=atv_hm_sports_c_9zZ8D2_hom",
     "ok": true,
     "error": "",
-    "bytes": 1198960,
-    "json_blocks": 112,
+    "bytes": 1186360,
+    "json_blocks": 113,
     "html_keyword_hits": [
       {
         "keyword": "prime",
-        "count": 465
+        "count": 468
       },
       {
         "keyword": "prime video",
-        "count": 16
+        "count": 20
       },
       {
         "keyword": "sport",
-        "count": 297
+        "count": 295
       },
       {
         "keyword": "sports",
-        "count": 285
+        "count": 283
       },
       {
         "keyword": "live tv",
@@ -235,7 +121,7 @@
       },
       {
         "keyword": "channel",
-        "count": 1790
+        "count": 1630
       },
       {
         "keyword": "station",
@@ -250,20 +136,20 @@
         "count": 16
       },
       {
-        "keyword": "wta",
+        "keyword": "atp",
         "count": 1
       },
       {
         "keyword": "football",
-        "count": 9
+        "count": 11
       },
       {
         "keyword": "wm",
-        "count": 186
+        "count": 179
       },
       {
         "keyword": "soccer",
-        "count": 22
+        "count": 23
       }
     ]
   },
